@@ -1,0 +1,30 @@
+# OpeniLink Hub - Docker Compose
+#
+# Environment variables (all optional, defaults shown):
+#   SECRET    - server secret for token encryption (default: change-me-in-production)
+#   RP_ORIGIN - WebAuthn origin (default: http://localhost:9800)
+#   RP_ID     - WebAuthn relying party ID (default: localhost)
+#   RP_NAME   - WebAuthn relying party display name (default: OpeniLink Hub)
+#
+# SQLite data is persisted in the named volume "openilink-data", mounted at
+# /var/lib/openilink-hub (the container's default data dir).
+#
+# DATABASE_URL is optional: leave it unset to use SQLite, or point it at a
+# PostgreSQL instance to use Postgres instead, e.g.:
+#   DATABASE_URL: postgres://openilink:pass@postgres:5432/openilink?sslmode=disable
+
+services:
+  openilink-hub:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "9800:9800"
+    volumes:
+      - openilink-data:/var/lib/openilink-hub
+    environment:
+      SECRET: ${SECRET:-change-me-in-production}
+      # Optional: switch to PostgreSQL (run your own postgres service)
+      # DATABASE_URL: postgres://openilink:${PASSWORD:-openilink}@postgres:5432/openilink?sslmode=disable
+
+volumes:
+  openilink-data:

@@ -1,0 +1,39 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+/oih
+/openilink-hub
+/mockserver
+
+# Test/dev databases
+*.db
+*.db-shm
+*.db-wal
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Plans and docs (local only)
+docs/plans/
+
+# Environment
+.env
+.env.*
+
+# Runner config (contains app tokens)
+runner.yaml
+
+# Build output
+dist/
+.worktrees/
+.claude/worktrees/

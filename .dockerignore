@@ -1,0 +1,21 @@
+# Version control
+.git
+
+# Dependencies
+**/node_modules
+
+# Local data & databases
+*.db
+*.db-shm
+*.db-wal
+data/
+
+# Environment / secrets
+.env
+.env.*
+runner.yaml
+
+# Local build artifacts
+oih
+openilink-hub
+mockserver
